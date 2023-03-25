@@ -1,0 +1,25 @@
+{
+  "private": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.types.json",
+    "clean": "rimraf build coverage",
+    "fix": "eslint . --format stylish --fix",
+    "fmt": "prettier --write 'src/**/*' 'test/**/*'",
+    "fmtcheck": "prettier --write 'src/**/*' 'test/**/*'",
+    "lint": "eslint . --format stylish --max-warnings 0",
+    "test": "jest"
+  },
+  "workspaces": [
+    "packages/express",
+    "packages/nextjs",
+    "packages/node"
+  ],
+  "dependencies": {
+    "oso-cloud": "^1.0.2"
+  },
+  "devDependencies": {},
+  "version": "0.0.0",
+  "name": "@osohq/node",
+  "main": "src/index.ts",
+  "license": "MIT"
+}
