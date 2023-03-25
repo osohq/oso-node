@@ -10,10 +10,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@osohq/node": "^0.0.0"
+    "@osohq/node": "^0.1.0"
   },
-  "devDependencies": {},
-  "version": "0.0.0",
+  "version": "0.1.0",
   "name": "@osohq/express",
   "main": "src/index.ts",
   "license": "Apache-2.0"

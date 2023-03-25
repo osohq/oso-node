@@ -17,8 +17,7 @@
   "dependencies": {
     "oso-cloud": "^1.0.2"
   },
-  "devDependencies": {},
-  "version": "0.0.0",
+  "version": "0.1.0",
   "name": "@osohq/node",
   "main": "src/index.ts",
   "license": "MIT"
