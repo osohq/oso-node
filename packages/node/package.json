@@ -11,7 +11,6 @@
   },
   "workspaces": [
     "packages/express",
-    "packages/nextjs",
     "packages/node"
   ],
   "dependencies": {
@@ -20,5 +19,6 @@
   "version": "0.1.0",
   "name": "@osohq/node",
   "main": "src/index.ts",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "e28815dce65a463fdb0b1edb3c4ae805ed694cf5"
 }

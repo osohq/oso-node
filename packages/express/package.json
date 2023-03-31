@@ -12,8 +12,19 @@
   "dependencies": {
     "@osohq/node": "^0.1.0"
   },
+  "peerDependencies": {
+    "express": "4.x"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/supertest": "^2.0.12",
+    "express": "^4.18.2",
+    "path-to-regexp": "^6.2.1",
+    "supertest": "^6.3.3"
+  },
   "version": "0.1.0",
   "name": "@osohq/express",
   "main": "src/index.ts",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "gitHead": "e28815dce65a463fdb0b1edb3c4ae805ed694cf5"
 }
