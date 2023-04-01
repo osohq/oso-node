@@ -19,6 +19,5 @@
   "version": "0.2.0",
   "name": "@osohq/node",
   "main": "src/index.ts",
-  "license": "Apache-2.0",
-  "gitHead": "ed617bb95f937075d55983102978a69c59b6e4d2"
+  "license": "Apache-2.0"
 }
