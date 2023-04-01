@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@osohq/node": "^0.2.0"
+    "@osohq/node": "^0.2.1"
   },
   "peerDependencies": {
     "express": "4.x"
@@ -22,12 +22,12 @@
     "path-to-regexp": "^6.2.1",
     "supertest": "^6.3.3"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "name": "@osohq/express",
   "main": "src/index.ts",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c43984206802da3eed1592d8c5321c12c58b9717"
+  "gitHead": "1a10e21256b9be619219e02adf2727b4a0ca644c"
 }
