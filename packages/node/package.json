@@ -16,12 +16,12 @@
   "dependencies": {
     "oso-cloud": "^1.0.2"
   },
-  "version": "0.2.1",
+  "version": "0.2.2",
   "name": "@osohq/node",
   "main": "src/index.ts",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "1a10e21256b9be619219e02adf2727b4a0ca644c"
+  "gitHead": "a3238f3c2803f371b450aa23fd812c57ef09a8a9"
 }
