@@ -1,26 +1,12 @@
 {
+  "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
-    "alwaysStrict": false,
-    "downlevelIteration": true,
-    "importHelpers": true,
-    "inlineSources": true,
-    "isolatedModules": true,
-    "lib": ["es6"],
-    "moduleResolution": "node",
-    "noErrorTruncation": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "preserveWatchOutput": true,
-    "sourceMap": true,
-    "strict": true,
-    "strictBindCallApply": false,
-    "target": "es6",
-    "allowSyntheticDefaultImports": true,
-    "declaration": false,
-    "declarationMap": false,
-    "skipLibCheck": true,
     "esModuleInterop": true,
+    "lib": [
+      "DOM",
+      "ES2018"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

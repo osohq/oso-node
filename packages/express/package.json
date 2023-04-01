@@ -1,7 +1,7 @@
 {
   "private": false,
   "scripts": {
-    "build": "tsc -p tsconfig.types.json",
+    "build": "tsc -p tsconfig.types.json && tsc",
     "clean": "rimraf build coverage",
     "fix": "eslint . --format stylish --fix",
     "fmt": "prettier --write 'src/**/*' 'test/**/*'",
@@ -26,5 +26,5 @@
   "name": "@osohq/express",
   "main": "src/index.ts",
   "license": "Apache-2.0",
-  "gitHead": "e28815dce65a463fdb0b1edb3c4ae805ed694cf5"
+  "gitHead": "ed617bb95f937075d55983102978a69c59b6e4d2"
 }
