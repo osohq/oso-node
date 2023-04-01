@@ -24,7 +24,11 @@
   },
   "version": "0.2.4",
   "name": "@osohq/express",
-  "main": "src/index.ts",
+  "main": "build/dist/index.js",
+  "types": "build/dist/index.d.ts",
+  "files": [
+    "build/dist"
+  ],
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
