@@ -96,8 +96,6 @@ export class ExpressIntegration extends OsoSdk {
           await this.errorHandler(res, next);
         }
       } catch (e) {
-        console.log(e);
-        console.log(this);
         next(e);
       }
     };

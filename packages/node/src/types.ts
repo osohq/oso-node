@@ -1,7 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ConfigOptions<
-  R = (...args: any) => any,
-  U = (...args: any) => any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  R = (...args: any) => unknown,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  U = (...args: any) => unknown
 > {
   apiKey: string;
   shared?: boolean;

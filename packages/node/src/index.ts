@@ -1,5 +1,6 @@
 import { OsoSdkError } from './errors';
 import { OsoSdk } from './sdk';
+import { SHARED_OBJ } from './shared';
 import { ConfigOptions } from './types';
 
 export { OsoSdkError } from './errors';
@@ -8,7 +9,11 @@ export { OsoSdk } from './sdk';
 export { DEFAULT_USER_ID } from './consts';
 
 export function globalOso(): OsoSdk {
-  return OsoSdk.getInstance();
+  if (SHARED_OBJ.oso === undefined) {
+    throw new OsoSdkError('`init` must first be called with shared: true');
+  }
+
+  return SHARED_OBJ.oso;
 }
 
 export function init<T extends OsoSdk>(
@@ -18,13 +23,13 @@ export function init<T extends OsoSdk>(
   const oso = new c(opts.apiKey);
 
   if (opts.shared) {
-    if (OsoSdk.getInstance()) {
+    if (SHARED_OBJ.oso) {
       throw new OsoSdkError(
-        '`init` cannot be called multiple times when shared = true'
+        '`init` cannot be called multiple times when shared: true'
       );
     }
 
-    OsoSdk._setInstance(oso);
+    SHARED_OBJ.oso = oso;
   }
 
   return oso;
