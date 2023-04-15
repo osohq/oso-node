@@ -25,6 +25,7 @@ function tryPathParam(req: Request, path: string) {
   }
 }
 
+/** Express integration for OsoSdk */
 export class ExpressIntegration extends OsoSdk {
   actorIdFromRequest: FromRequest;
   actionFromRequest: FromRequest;
@@ -62,6 +63,14 @@ export class ExpressIntegration extends OsoSdk {
     };
   }
 
+  /**
+   * Express middleware function to perform an authorize request.
+   *
+   * @param {Enforce} args Arguments to be used on the authorize request
+   * @returns Express middleware function.
+   *
+   * @see {@link Enforce} for documentation on arguments.
+   */
   enforce = (args: Enforce) => {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {

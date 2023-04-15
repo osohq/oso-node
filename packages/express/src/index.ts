@@ -5,6 +5,14 @@ import { ConfigOptions, init as sdkInit } from '@osohq/node';
 export type { Enforce } from './types';
 export { ExpressIntegration } from './sdk';
 
+/**
+ * Create an instance of the Oso SDK to be used with Express.
+ *
+ * @param opts Configuration options for this SDK.
+ * @returns the instantiated Oso SDK.
+ *
+ * @see {@link ConfigOptions} for documentation on configuration options.
+ */
 export function init(opts: ConfigOptions<FromRequest, OnResponse>) {
   const oso = sdkInit(opts, ExpressIntegration);
 
