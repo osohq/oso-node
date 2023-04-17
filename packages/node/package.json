@@ -1,7 +1,7 @@
 {
   "private": false,
   "scripts": {
-    "build": "tsc -p tsconfig.types.json",
+    "build": "tsc",
     "clean": "rimraf build coverage",
     "fix": "eslint . --format stylish --fix",
     "fmt": "prettier --write 'src/**/*' 'test/**/*'",
@@ -11,14 +11,20 @@
   },
   "workspaces": [
     "packages/express",
-    "packages/nextjs",
     "packages/node"
   ],
   "dependencies": {
     "oso-cloud": "^1.0.2"
   },
-  "version": "0.1.0",
+  "version": "0.2.7",
   "name": "@osohq/node",
-  "main": "src/index.ts",
-  "license": "MIT"
+  "main": "build/dist/index.js",
+  "types": "build/dist/index.d.ts",
+  "files": [
+    "build/dist"
+  ],
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
 }
