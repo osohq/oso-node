@@ -25,10 +25,10 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: "yarn"
           cache-dependency-path: "yarn.lock"
-      - name: Install dependencies
+      - name: Install dependencies and build packages
         run: |
           yarn
-          yarn build:types
+          yarn build
       - name: Lint
         run: |
           yarn lint
