@@ -23,7 +23,5 @@ jobs:
           yarn build
       - name: Set up .npmrc
         run: echo '//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN_UNCOMMONCENSE_EXP_20240416}' > .npmrc
-      - name: Version
+      - name: Version and publish
         run: yarn lerna publish --yes ${{github.event.inputs.version}}
-      - name: Publish
-        run: yarn lerna publish --from-git --yes
