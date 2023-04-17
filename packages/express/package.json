@@ -2,6 +2,7 @@
   "private": false,
   "scripts": {
     "build": "tsc",
+    "build:types": "tsc -p tsconfig.types.json",
     "clean": "rimraf build coverage",
     "fix": "eslint . --format stylish --fix",
     "fmt": "prettier --write 'src/**/*' 'test/**/*'",
