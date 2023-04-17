@@ -17,12 +17,12 @@ jobs:
           node-version: 18
           cache: "yarn"
           cache-dependency-path: "yarn.lock"
-      - name: Install dependencies
-        run: yarn
+      - name: Install dependencies and build packages
+        run: |
+          yarn
+          yarn build
       - name: Set up .npmrc
         run: echo '//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN_UNCOMMONCENSE_EXP_20240416}' > .npmrc
-      - name: Build
-        run: yarn build
       - name: Version
         run: yarn lerna publish --yes ${{github.event.inputs.version}}
       - name: Publish
