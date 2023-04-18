@@ -4,6 +4,8 @@ The Base Oso SDK provides helpers for interacting with Oso Cloud. If you are
 using a web framework, we recommend using the integration specific to that web
 framework.
 
+**Please Note: The SDK is currently released as a developer preview. Do not use this SDK for production workloads.**
+
 ## Install
 
 ```bash

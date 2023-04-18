@@ -2,6 +2,8 @@
 
 The Oso SDK with Express integration provides helper functions to facilitate hooking Oso into the Express web framework.
 
+**Please Note: The SDK is currently released as a developer preview. Do not use this SDK for production workloads.**
+
 ## Install
 
 ```bash
