@@ -1,0 +1,30 @@
+{
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf build coverage",
+    "fix": "eslint . --format stylish --fix",
+    "fmt": "prettier --write 'src/**/*' 'test/**/*'",
+    "fmtcheck": "prettier --write 'src/**/*' 'test/**/*'",
+    "lint": "eslint . --format stylish --max-warnings 0",
+    "test": "jest"
+  },
+  "workspaces": [
+    "packages/express",
+    "packages/node"
+  ],
+  "dependencies": {
+    "oso-cloud": "^1.0.2"
+  },
+  "version": "0.2.13",
+  "name": "@osohq/node",
+  "main": "build/dist/index.js",
+  "types": "build/dist/index.d.ts",
+  "files": [
+    "build/dist"
+  ],
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}

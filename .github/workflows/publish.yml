@@ -1,0 +1,23 @@
+name: Publish
+on: workflow_dispatch
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+          cache-dependency-path: "yarn.lock"
+      - name: Install dependencies and build packages
+        run: |
+          yarn
+          yarn build
+      - name: Set up .npmrc
+        run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN_UNCOMMONCENSE_EXP_20240416 }}' > .npmrc
+      - name: Publish
+        run: |
+          yarn lerna publish --yes from-package
