@@ -36,3 +36,12 @@ License Agreement][cla], you will be asked to do so upon opening your first PR.
 Thank you for contributing!
 
 [cla]: https://github.com/osohq/cla/blob/main/individual.md
+
+## Publishing a Release
+
+_These steps are only relevant to Oso employees when preparing and publishing a new SDK release._
+
+1. Create a new branch off of `main`. Push the branch to remote.
+2. Run `yarn version --no-private`. This pushes versioning commits and release package to remote.
+3. Create a PR towards the `main` branch.
+4. After the PR is merged, publish the release using the [publish workflow](https://github.com/osohq/oso-node/actions/workflows/publish.yml).
