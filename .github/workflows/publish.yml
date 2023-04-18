@@ -20,4 +20,4 @@ jobs:
         run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN_UNCOMMONCENSE_EXP_20240416 }}' > .npmrc
       - name: Publish
         run: |
-          yarn lerna publish --yes from-package
+          yarn lerna publish --yes from-git
