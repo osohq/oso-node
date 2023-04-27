@@ -1,3 +1,4 @@
+import { version } from '../package.json';
 import { Enforce, FromRequest, OnResponse } from './types';
 import { OsoSdk, OsoSdkError, DEFAULT_USER_ID } from '@osohq/node';
 import { Request, Response, NextFunction } from 'express';
@@ -31,7 +32,7 @@ export class ExpressIntegration extends OsoSdk {
   actionFromRequest: FromRequest;
   errorHandler: OnResponse;
   constructor(apiKey: string) {
-    super(apiKey);
+    super(apiKey, `OsoSdkExpress/${String(version)}`);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     this.actorIdFromRequest = (_req: Request) => DEFAULT_USER_ID;

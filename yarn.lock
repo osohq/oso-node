@@ -6115,10 +6115,10 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==
 
-oso-cloud@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/oso-cloud/-/oso-cloud-1.0.2.tgz#41f45f5ce8d6060661758f1dc54141664fa3fc5d"
-  integrity sha512-Ptylth1dOYgFnk2E8rbKKQXfW/Q8KpdRFsnuNNdGk4BjJcbaHfv0fkjlTb3aGnGyFE8jNb2R8rQC/PFshv7cfQ==
+oso-cloud@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/oso-cloud/-/oso-cloud-1.0.4.tgz#9b129332fd136c3405069a91561496e51af6b9f3"
+  integrity sha512-eKQw3khxc+2XS1IX9wHeShXihVkJd/16xWlmz4ngAnf8mom9tucGQ5gLtuXUhO70YL2B/J3sbCHQzn5Yyr+75g==
   dependencies:
     fetch-retry-ts "^1.1.25"
     node-fetch "^2.6.7"

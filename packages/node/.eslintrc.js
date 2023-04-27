@@ -3,4 +3,5 @@ module.exports = {
     node: true,
   },
   extends: ['../../.eslintrc.js'],
+  ignorePatterns: ['jest.config.js']
 };
