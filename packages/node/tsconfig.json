@@ -4,6 +4,7 @@
     "include": ["src/**/*"],
 
     "compilerOptions": {
+      "resolveJsonModule": true,
       "outDir": "build/dist"
     }
   }

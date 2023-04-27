@@ -24,8 +24,8 @@
   },
   "version": "0.3.1",
   "name": "@osohq/express",
-  "main": "build/dist/index.js",
-  "types": "build/dist/index.d.ts",
+  "main": "build/dist/src/index.js",
+  "types": "build/dist/src/index.d.ts",
   "files": [
     "build/dist"
   ],
