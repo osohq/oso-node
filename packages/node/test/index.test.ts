@@ -39,30 +39,34 @@ describe('can still serve responses when Oso Cloud is unreachable', () => {
   });
 
   test('basic test', async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
-    const errorMessage = '500 buddy';
     mockReq
-      .mockImplementationOnce(
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        (_path, _method, _params, _body) => Promise.resolve({ allowed: true })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .mockImplementationOnce((_path, _method, _params, _body) =>
+        Promise.resolve({ allowed: false })
       )
-      .mockImplementation(
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        (_path, _method, _params, _body) =>
-          Promise.reject(new Error(errorMessage))
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .mockImplementationOnce((_path, _method, _params, _body) =>
+        Promise.resolve({ allowed: true })
       );
 
-    const beforeTheOutage = oso.authorize('cache', 'rules', 'everything');
-    await expect(beforeTheOutage).resolves.toBe(true);
+    const alice = { type: 'User', id: 'alice' };
+    const acme = { type: 'Organization', id: 'acme' };
+
+    await expect(oso.authorize(alice, 'delete', acme)).resolves.toBe(false);
+    await expect(oso.authorize(alice, 'read', acme)).resolves.toBe(true);
 
     // Oso Cloud outage begins...
+    mockReq.mockImplementation(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      (_path, _method, _params, _body) => Promise.reject(new Error('500 buddy'))
+    );
 
-    // Sanity check that mocks are working as expected.
-    const cacheMiss = oso.authorize('cache', 'is', 'beans');
-    await expect(cacheMiss).rejects.toThrowError(errorMessage);
+    const cacheMiss = oso.authorize(alice, 'delete', acme);
+    await expect(cacheMiss).resolves.toBe(false);
 
-    const cacheHit = oso.authorize('cache', 'rules', 'everything');
+    const cacheHit = oso.authorize(alice, 'read', acme);
     await expect(cacheHit).resolves.toBe(true);
   });
 });
