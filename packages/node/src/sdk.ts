@@ -3,8 +3,10 @@ import { OSO_URL } from './consts';
 import { Fact, Instance, Oso } from 'oso-cloud';
 
 export class OsoSdk extends Oso {
+  #cache: Map<string, boolean>;
   constructor(apiKey: string, userAgent?: string) {
     super(OSO_URL, apiKey, userAgent || `OsoSdk/${String(version)}`);
+    this.#cache = new Map();
   }
 
   async authorize(
@@ -13,11 +15,16 @@ export class OsoSdk extends Oso {
     resource: Instance,
     contextFacts?: Fact[] | undefined
   ): Promise<boolean> {
+    const args = JSON.stringify([actor, action, resource]);
     try {
-      return await super.authorize(actor, action, resource, contextFacts);
+      const res = await super.authorize(actor, action, resource, contextFacts);
+      this.#cache.set(args, res);
+      return res;
     } catch (e) {
-      console.error('GOT', e);
-      return true;
+      console.log(this.#cache);
+      const cacheEntry = this.#cache.get(args);
+      if (cacheEntry !== undefined) return cacheEntry;
+      throw e;
     }
   }
 }

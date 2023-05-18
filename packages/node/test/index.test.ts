@@ -27,8 +27,6 @@ describe('test init Oso handle', () => {
 });
 
 describe('can still serve responses when Oso Cloud is unreachable', () => {
-  expect.assertions(3);
-
   let oso: OsoSdk;
   let mockReq: jest.SpyInstance;
 
@@ -41,6 +39,8 @@ describe('can still serve responses when Oso Cloud is unreachable', () => {
   });
 
   test('basic test', async () => {
+    expect.assertions(3);
+
     const errorMessage = '500 buddy';
     mockReq
       .mockImplementationOnce(
@@ -64,19 +64,5 @@ describe('can still serve responses when Oso Cloud is unreachable', () => {
 
     const cacheHit = oso.authorize('cache', 'rules', 'everything');
     await expect(cacheHit).resolves.toBe(true);
-
-    // expect(mockReq).toHaveBeenCalledWith(
-    //   '/authorize',
-    //   'POST',
-    //   {},
-    //   {
-    //     action: 'rules',
-    //     actor_id: 'cache',
-    //     actor_type: 'String',
-    //     context_facts: [],
-    //     resource_id: 'everything',
-    //     resource_type: 'String',
-    //   }
-    // );
   });
 });
