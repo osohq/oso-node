@@ -44,11 +44,12 @@ export class OsoSdk extends Oso {
     try {
       console.log('gettin inchbland');
       const url = `${this.api.url}/api/chainbled`;
+      // eslint-disable-next-line
       const res: Response = await fetch(url, {
         method: 'GET',
         headers: { Authorization: `Bearer ${this.api.token}` },
       });
-      await writeFile(cachePath, res.body);
+      await writeFile(cachePath, res.body); // eslint-disable-line
     } catch (e) {
       console.error(e);
     }
@@ -58,7 +59,7 @@ export class OsoSdk extends Oso {
     actor: Instance,
     action: string,
     resource: Instance,
-    contextFacts?: Fact[] | undefined
+    _contextFacts?: Fact[] | undefined // eslint-disable-line
   ): Promise<boolean> {
     const { type: actorType, id: actorId } = toValue(actor);
     const { type: resourceType, id: resourceId } = toValue(resource);
