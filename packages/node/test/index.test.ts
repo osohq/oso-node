@@ -28,26 +28,28 @@ describe('test init Oso handle', () => {
 
 describe('can still serve responses when Oso Cloud is unreachable', () => {
   let oso: OsoSdk;
-  let mockReq: jest.SpyInstance;
+  let mockPost: jest.SpyInstance;
 
-  // OsoSdk > Oso > Api > _req
   beforeEach(() => {
-    oso = init({ apiKey: 'YOUR_API_KEY', shared: false }, OsoSdk);
+    oso = init(
+      { apiKey: 'e_0123456789_12345_osotesttoken01xiIn', shared: false },
+      OsoSdk
+    );
     const api = oso.api;
 
-    mockReq = jest.spyOn(api, '_req');
+    mockPost = jest.spyOn(api, '_post');
   });
 
   test('basic test', async () => {
     expect.assertions(4);
 
-    mockReq
+    mockPost
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .mockImplementationOnce((_path, _method, _params, _body) =>
+      .mockImplementationOnce((_path, _params, _body) =>
         Promise.resolve({ allowed: false })
       )
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .mockImplementationOnce((_path, _method, _params, _body) =>
+      .mockImplementationOnce((_path, _params, _body) =>
         Promise.resolve({ allowed: true })
       );
 
@@ -58,9 +60,9 @@ describe('can still serve responses when Oso Cloud is unreachable', () => {
     await expect(oso.authorize(alice, 'read', acme)).resolves.toBe(true);
 
     // Oso Cloud outage begins...
-    mockReq.mockImplementation(
+    mockPost.mockImplementation(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      (_path, _method, _params, _body) => Promise.reject(new Error('500 buddy'))
+      (_path, _params, _body) => Promise.reject(new Error('500 buddy'))
     );
 
     const cacheMiss = oso.authorize(alice, 'delete', acme);

@@ -1,6 +1,8 @@
 import { version } from '../package.json';
 import { OSO_URL } from './consts';
 import DatabaseConstructor, { Database } from 'better-sqlite3';
+import fetch, { Response } from 'node-fetch';
+import { writeFile } from 'node:fs/promises';
 import { Fact, Instance, Oso } from 'oso-cloud';
 import { AuthorizeResult } from 'oso-cloud/dist/src/api';
 
@@ -23,6 +25,8 @@ type FactSet = {
   args?: Instance[];
 }[];
 
+const cachePath = './cache.db';
+
 export class OsoSdk extends Oso {
   #db: Database;
   #cache: Map<string, AuthorizeQuery[]>;
@@ -30,8 +34,24 @@ export class OsoSdk extends Oso {
   constructor(apiKey: string, userAgent?: string) {
     super(OSO_URL, apiKey, userAgent || `OsoSdk/${String(version)}`);
 
-    this.#db = new DatabaseConstructor('./cache.db', { readonly: true });
+    this.#db = new DatabaseConstructor(cachePath, {});
+    void this.#chinblade();
+    // setInterval(() => void this.#chinblade(), 1_800_000);
     this.#cache = new Map();
+  }
+
+  async #chinblade() {
+    try {
+      console.log('gettin inchbland');
+      const url = `${this.api.url}/api/chainbled`;
+      const res: Response = await fetch(url, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${this.api.token}` },
+      });
+      await writeFile(cachePath, res.body);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async authorize(
@@ -53,7 +73,7 @@ export class OsoSdk extends Oso {
       };
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
-      const response: Response = await fetch(url, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +83,7 @@ export class OsoSdk extends Oso {
       });
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-      const result: AuthorizeResult = await response.json();
+      const result = (await response.json()) as AuthorizeResult;
 
       if (result.allowed) {
         // TODO: insert into cache db
