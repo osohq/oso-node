@@ -66,6 +66,8 @@ export class OsoSdk extends Oso {
       const result: AuthorizeResult = await response.json();
 
       if (result.allowed) {
+        // TODO: insert into cache db
+
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         const matchingFactSets = response.headers.get('matching-fact-sets');
         if (matchingFactSets !== null) {
